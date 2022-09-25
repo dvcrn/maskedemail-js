@@ -6,7 +6,7 @@ require("./wasm_exec.js");
 
 import wasmMain from "./static/main.wasm";
 
-interface MaskedEmail {
+export interface MaskedEmail {
   forDomain: string;
   createdAt: string;
   createdBy: string;
