@@ -1,5 +1,7 @@
-import crypto from "crypto";
-globalThis.crypto = crypto as any;
+if (!globalThis.crypto) {
+  const crypto = require("crypto");
+  globalThis.crypto = crypto as any;
+}
 
 // import wasm exec environment for Go
 require("./wasm_exec.js");
