@@ -22,7 +22,9 @@ const config = {
   plugins: [
     commonjs(),
     wasm({
-      targetEnv: "auto",
+      sync: ["main.wasm"],
+      targetEnv: "auto-inline",
+      maxFileSize: 0,
     }),
     nodeResolve(),
     typescript({
