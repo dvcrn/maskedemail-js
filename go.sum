@@ -6,5 +6,7 @@ github.com/dvcrn/maskedemail-cli v0.0.0-20220925034132-238d1701d1c0 h1:qW8ubFkJF
 github.com/dvcrn/maskedemail-cli v0.0.0-20220925034132-238d1701d1c0/go.mod h1:TU8E0RslsOUiXYsICzcpPcThV56wOhuGt+5+NNXDx6k=
 github.com/dvcrn/maskedemail-cli v0.0.0-20220925034450-23716832addd h1:kKlAmy7lc/fYGU4V/ucr1khmCq1EvxHNlex0EBSQABc=
 github.com/dvcrn/maskedemail-cli v0.0.0-20220925034450-23716832addd/go.mod h1:TU8E0RslsOUiXYsICzcpPcThV56wOhuGt+5+NNXDx6k=
+github.com/dvcrn/maskedemail-cli v0.0.0-20221002023645-dc18e79ca1ac h1:aOcBrmbtmC7M35aXUirFdJWbi95pEXjVzpWUdq9B75w=
+github.com/dvcrn/maskedemail-cli v0.0.0-20221002023645-dc18e79ca1ac/go.mod h1:TU8E0RslsOUiXYsICzcpPcThV56wOhuGt+5+NNXDx6k=
 github.com/mitchellh/mapstructure v1.4.3 h1:OVowDSCllw/YjdLkam3/sm7wEtOy59d8ndGgCcyj8cs=
 github.com/mitchellh/mapstructure v1.4.3/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RRV2QTWOzhPopBRo=
