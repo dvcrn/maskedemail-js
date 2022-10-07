@@ -5,16 +5,17 @@ import json from "@rollup/plugin-json";
 import wasm from "@rollup/plugin-wasm";
 import copy from "rollup-plugin-copy";
 
-const config = {
-  input: "main.ts",
+
+const config = ['main', 'wasm', 'gopherjs'].map((name) => ({
+  input: `${name}.ts`,
   output: [
     {
-      file: "lib/main.cjs.js",
+      file: `lib/${name}.cjs.js`,
       format: "cjs",
       sourcemap: true,
     },
     {
-      file: "lib/main.esm.js",
+      file: `lib/${name}.esm.js`,
       format: "es",
       sourcemap: true,
     },
@@ -44,6 +45,6 @@ const config = {
       ],
     }),
   ],
-};
+}));
 
 export default config;

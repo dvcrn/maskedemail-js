@@ -1,37 +1,20 @@
 import { load, Mod } from "./core";
-import "./shim";
-import wasmMain from "./static/main.wasm";
-
-export enum InitMode {
-  Wasm = "wasm",
-  Gopherjs = "gopherjs"
-}
+import './shim';
 
 let initPromise: Promise<Mod>;
 
 /**
- * Initializes MaskedEmail with the given mode
- * If mode is not specified, will attempt to use WASM
- * If WebAssembly is not defined, will automatically fallback ot the gopherjs version
+ * Initializes MaskedEmail with goherjs mode
  *
  * You don't need to care about the return value, subsequent function calls of this module
  * will bind to it
  *
- * @param      {InitMode}  [initMode=InitMode.Wasm]  The initialize mode, gopherjs or wasm
  * @return     {Promise}   Module with initialized functions
  */
-export const init = async (initMode: InitMode = InitMode.Wasm): Promise<Mod> => {
+export const init = async (): Promise<Mod> => {
   if (!initPromise) {
     initPromise = new Promise<Mod>(async (resolve, reject) => {
-      if (initMode === InitMode.Wasm && globalThis.WebAssembly) {
-        require("./wasm_exec.js");
-
-        const go = new (globalThis as any).Go();
-        const wasmObj = await wasmMain(go.importObject);
-        go.run(wasmObj.instance);
-      } else {
-        require("./main.gopherjs.js");
-      }
+      require("./main.gopherjs.js");
 
       resolve({
         session: (globalThis as any)["maskedemailSession"],
@@ -46,7 +29,8 @@ export const init = async (initMode: InitMode = InitMode.Wasm): Promise<Mod> => 
   }
 
   return initPromise;
-};
+}
 
 const { session, list, create, enable, disable, enableById, disableById } = load(init);
 export { session, list, create, enable, disable, enableById, disableById };
+
