@@ -23,7 +23,7 @@ const config = {
     commonjs(),
     wasm({
       sync: ["main.wasm"],
-      targetEnv: "auto-inline",
+      targetEnv: "auto",
       maxFileSize: 0,
     }),
     nodeResolve(),
@@ -37,7 +37,11 @@ const config = {
     }),
     json(),
     copy({
-      targets: [{ src: "static/wasm_exec.js", dest: "lib/" }],
+      targets: [
+        { src: "static/wasm_exec.js", dest: "lib/" },
+        { src: "static/main.gopherjs.js", dest: "lib/" },
+        { src: "static/main.gopherjs.js.map", dest: "lib/" },
+      ],
     }),
   ],
 };

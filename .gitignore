@@ -1,3 +1,5 @@
 node_modules
 lib/
 static/main.wasm
+static/main.gopherjs.*
+cmd/gopherjs

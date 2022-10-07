@@ -16,17 +16,17 @@ node i maskedemail
 
 ## Notes before using
 
-This is functional but in no way performant. Instead of implementing the API in JavaScript, this package compiles [maskedemail-cli](https://github.com/dvcrn/maskedemail-cli) to WASM, then executes that. The WASM is pretty unoptimized and rocks a whopping 7MB+ in file size :D 
+Instead of implementing the API in JavaScript, this package compiles [maskedemail-cli](https://github.com/dvcrn/maskedemail-cli) to WASM, then executes that. The WASM is pretty unoptimized and rocks a whopping 7MB+ in file size :D 
 
 Why?? Because I wanted to play around with WASM, and didn't want to duplicate the code again.
 
-If you don't care about the file size and potential dragons on the way, then have fun using!
+There is a [gopherjs](https://github.com/gopherjs/gopherjs) fallback if WebAssembly is not available. Both gopherjs and wasm builds are pretty chunky in file size so probably not a good idea to use this on the browser.
 
-## Usage 
+## Usage
 
 Follow the "authentication" steps over at https://github.com/dvcrn/maskedemail-cli#authentication
 
-```
+```ts
 import { list, create } from "maskedemail";
 
 const token = "fastmailToken";
@@ -45,9 +45,29 @@ const accID = "fastmailAccID";
 });
 ```
 
+### Using gopherjs mode instead
+
+```ts
+import { init, list, create } from "maskedemail";
+
+const token = "fastmailToken";
+const accID = "fastmailAccID";
+
+(async () => {
+  await init('gopherjs');
+  const sess = await session(token);
+  console.log(sess);
+})().catch((err) => {
+  console.error(err);
+});
+```
+
+
 ## Building
 
 Run `make build` to build the WASM file and run rollup to compile the TypeScript
+
+Gopherjs variant code is generated with `make generate-gopherjs`
 
 
 ## License

@@ -55,21 +55,21 @@ func list(this js.Value, args []js.Value) interface{} {
 			session, err := c.Session()
 			if err != nil {
 				reject.Invoke(err.Error())
-				fmt.Println(err.Error)
+				fmt.Println(err.Error())
 				return
 			}
 
 			aliases, err := c.GetAllMaskedEmails(session, accountID)
 			if err != nil {
 				reject.Invoke(err.Error())
-				fmt.Println(err.Error)
+				fmt.Println(err.Error())
 				return
 			}
 
 			out, err := remarshalInterface(aliases)
 			if err != nil {
 				reject.Invoke(err.Error())
-				fmt.Println(err.Error)
+				fmt.Println(err.Error())
 				return
 			}
 
@@ -103,21 +103,21 @@ func create(this js.Value, args []js.Value) interface{} {
 			session, err := c.Session()
 			if err != nil {
 				reject.Invoke(err.Error())
-				fmt.Println(err.Error)
+				fmt.Println(err.Error())
 				return
 			}
 
 			createdEmail, err := c.CreateMaskedEmail(session, accountID, forDomain, true)
 			if err != nil {
 				reject.Invoke(err.Error())
-				fmt.Println(err.Error)
+				fmt.Println(err.Error())
 				return
 			}
 
 			out, err := remarshalInterface(createdEmail)
 			if err != nil {
 				reject.Invoke(err.Error())
-				fmt.Println(err.Error)
+				fmt.Println(err.Error())
 				return
 			}
 
@@ -157,7 +157,7 @@ func updateEmailStateByID(this js.Value, args []js.Value, action action) interfa
 			session, err := c.Session()
 			if err != nil {
 				reject.Invoke(err.Error())
-				fmt.Println(err.Error)
+				fmt.Println(err.Error())
 				return
 			}
 
@@ -166,7 +166,7 @@ func updateEmailStateByID(this js.Value, args []js.Value, action action) interfa
 				res, err = c.EnableMaskedEmailByID(session, accountID, maskedEmailID)
 				if err != nil {
 					reject.Invoke(err.Error())
-					fmt.Println(err.Error)
+					fmt.Println(err.Error())
 					return
 				}
 
@@ -174,7 +174,7 @@ func updateEmailStateByID(this js.Value, args []js.Value, action action) interfa
 				res, err = c.DisableMaskedEmailByID(session, accountID, maskedEmailID)
 				if err != nil {
 					reject.Invoke(err.Error())
-					fmt.Println(err.Error)
+					fmt.Println(err.Error())
 					return
 				}
 
@@ -183,7 +183,7 @@ func updateEmailStateByID(this js.Value, args []js.Value, action action) interfa
 			out, err := remarshalInterface(res)
 			if err != nil {
 				reject.Invoke(err.Error())
-				fmt.Println(err.Error)
+				fmt.Println(err.Error())
 				return
 			}
 
@@ -216,7 +216,7 @@ func updateEmailState(this js.Value, args []js.Value, action action) interface{}
 			session, err := c.Session()
 			if err != nil {
 				reject.Invoke(err.Error())
-				fmt.Println(err.Error)
+				fmt.Println(err.Error())
 				return
 			}
 
@@ -225,7 +225,7 @@ func updateEmailState(this js.Value, args []js.Value, action action) interface{}
 				res, err = c.EnableMaskedEmail(session, accountID, maskedEmail)
 				if err != nil {
 					reject.Invoke(err.Error())
-					fmt.Println(err.Error)
+					fmt.Println(err.Error())
 					return
 				}
 
@@ -233,7 +233,7 @@ func updateEmailState(this js.Value, args []js.Value, action action) interface{}
 				res, err = c.DisableMaskedEmail(session, accountID, maskedEmail)
 				if err != nil {
 					reject.Invoke(err.Error())
-					fmt.Println(err.Error)
+					fmt.Println(err.Error())
 					return
 				}
 
@@ -242,7 +242,7 @@ func updateEmailState(this js.Value, args []js.Value, action action) interface{}
 			out, err := remarshalInterface(res)
 			if err != nil {
 				reject.Invoke(err.Error())
-				fmt.Println(err.Error)
+				fmt.Println(err.Error())
 				return
 			}
 
@@ -289,14 +289,14 @@ func session(this js.Value, args []js.Value) interface{} {
 			session, err := c.Session()
 			if err != nil {
 				reject.Invoke(err.Error())
-				fmt.Println(err.Error)
+				fmt.Println(err.Error())
 				return
 			}
 
 			out, err := remarshalInterface(session)
 			if err != nil {
 				reject.Invoke(err.Error())
-				fmt.Println(err.Error)
+				fmt.Println(err.Error())
 				return
 			}
 
