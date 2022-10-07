@@ -37,6 +37,7 @@ export const init = async (): Promise<Mod> => {
   return initPromise;
 }
 
+export * from './types';
 const { session, list, create, enable, disable, enableById, disableById } = load(init);
 export { session, list, create, enable, disable, enableById, disableById };
 
