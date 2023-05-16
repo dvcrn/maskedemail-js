@@ -65,10 +65,14 @@ const accID = "fastmailAccID";
 
 ## Building
 
-Run `make build` to build the WASM file and run rollup to compile the TypeScript
+Requirements:
 
-Gopherjs variant code is generated with `make generate-gopherjs`
+- gopherjs (https://github.com/gopherjs/gopherjs)
+- rollup (`npm install --global rollup`)
 
+Make sure to run `yarn` to install all the dependencies
+
+Run `make build` to build both wasm and gopherjs variants, and bundle with rollup
 
 ## License
 

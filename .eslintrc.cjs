@@ -34,6 +34,6 @@ module.exports = {
             "error",
             "always"
         ],
-        "@typescript-eslint/no-explicit-any": false
+        "@typescript-eslint/no-explicit-any": 'off'
     }
 };

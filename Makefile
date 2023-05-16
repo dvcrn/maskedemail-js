@@ -20,7 +20,7 @@ build-gopherjs:
 .PHONY: rollup
 rollup:
 	rm -rf lib/
-	rollup -c rollup.config.js
+	rollup -c rollup.config.mjs
 
 build: generate-gopherjs build-wasm build-gopherjs rollup
 
