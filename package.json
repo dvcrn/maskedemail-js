@@ -28,7 +28,7 @@
   "module": "lib/main.esm.js",
   "types": "lib/main.d.ts",
   "name": "maskedemail",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "SDK for interacting with FastMail masked emails",
   "repository": "https://github.com/dvcrn/maskedemail-js",
   "author": "David Mohl <git@d.sh>",
