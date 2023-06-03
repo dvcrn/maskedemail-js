@@ -1,7 +1,6 @@
-import { Mod, Session, MaskedEmail } from './types';
+import { Mod, Session, MaskedEmail } from "./types";
 
 export const load = (init: () => Promise<Mod>) => ({
-
   session: async (token: string): Promise<Session> => {
     const mod = await init();
     return mod.session(token);
@@ -12,11 +11,16 @@ export const load = (init: () => Promise<Mod>) => ({
    *
    * @param      {string}  token      FastMail API token
    * @param      {string}  accountId  FastMail Account ID
+   * @param      {boolean}  includeDeleted  Whether to also include deleted masked emails (default false)
    * @return     {Promise<MaskedEmail[]>}  Promise that resolves with an array of masked emails
    */
-  list: async (token: string, accountId: string): Promise<MaskedEmail[]> => {
+  list: async (
+    token: string,
+    accountId: string,
+    includeDeleted = false
+  ): Promise<MaskedEmail[]> => {
     const mod = await init();
-    return mod.list(token, accountId);
+    return mod.list(token, accountId, includeDeleted);
   },
 
   /**
@@ -27,15 +31,19 @@ export const load = (init: () => Promise<Mod>) => ({
    * @param      {string}  token      FastMail API token
    * @param      {string}  accountId  FastMail Account ID
    * @param      {string}  forDomain  For which domain the email should get created
+   * @param      {string}  description  Description of the masked email
+   * @param      {string}  prefix  Prefix to use (eg xxx.f3x@mydomain.com, prefix is 'xxx')
    * @return     {Promise<MaskedEmail>}  Promise that resolves with the created MaskedEmail
    */
   create: async (
     token: string,
     accountId: string,
-    forDomain: string
+    forDomain: string,
+    description = "",
+    prefix = ""
   ): Promise<MaskedEmail> => {
     const mod = await init();
-    return mod.create(token, accountId, forDomain);
+    return mod.create(token, accountId, forDomain, description, prefix);
   },
 
   /**
@@ -65,34 +73,6 @@ export const load = (init: () => Promise<Mod>) => ({
     const mod = await init();
     return mod.disable(token, accountId, email);
   },
-
-  /**
-   * Sets the given MaskedEmail by ID to 'enabled'
-   * Return value is not returning anything yet
-   *
-   * @param      {string}  token      FastMail API Token
-   * @param      {string}  accountId  FastMail Account ID
-   * @param      {string}  emailId      Id of the masked email to update
-   * @return     {Promise<MaskedEmail>}  Promise that resolves with the changed MaskedEmail (currentl NOT working)
-   */
-  enableById: async (token: string, accountId: string, emailId: string): Promise<MaskedEmail> => {
-    const mod = await init();
-    return mod.enableById(token, accountId, emailId);
-  },
-
-  /**
-   * Sets the given MaskedEmail to 'enabled'
-   * Return value is not returning anything yet
-   *
-   * @param      {string}  token      FastMail API Token
-   * @param      {string}  accountId  FastMail Account ID
-   * @param      {string}  email      Id of the masked email to update
-   * @return     {Promise<MaskedEmail>}  Promise that resolves with the changed MaskedEmail (currentl NOT working)
-   */
-  disableById: async (token: string, accountId: string, emailId: string) => {
-    const mod = await init();
-    return mod.disableById(token, accountId, emailId);
-  },
 });
 
-export * from './types';
+export * from "./types";

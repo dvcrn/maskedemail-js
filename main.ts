@@ -4,7 +4,7 @@ import wasmMain from "./static/main.wasm";
 
 export enum InitMode {
   Wasm = "wasm",
-  Gopherjs = "gopherjs"
+  Gopherjs = "gopherjs",
 }
 
 let initPromise: Promise<Mod>;
@@ -48,6 +48,6 @@ export const init = async (initMode: InitMode = InitMode.Wasm): Promise<Mod> => 
   return initPromise;
 };
 
-export * from './types';
+export * from "./types";
 const { session, list, create, enable, disable, enableById, disableById } = load(init);
 export { session, list, create, enable, disable, enableById, disableById };

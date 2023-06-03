@@ -68,6 +68,10 @@ github.com/dvcrn/maskedemail-cli v0.0.0-20220925034450-23716832addd h1:kKlAmy7lc
 github.com/dvcrn/maskedemail-cli v0.0.0-20220925034450-23716832addd/go.mod h1:TU8E0RslsOUiXYsICzcpPcThV56wOhuGt+5+NNXDx6k=
 github.com/dvcrn/maskedemail-cli v0.0.0-20221002023645-dc18e79ca1ac h1:aOcBrmbtmC7M35aXUirFdJWbi95pEXjVzpWUdq9B75w=
 github.com/dvcrn/maskedemail-cli v0.0.0-20221002023645-dc18e79ca1ac/go.mod h1:TU8E0RslsOUiXYsICzcpPcThV56wOhuGt+5+NNXDx6k=
+github.com/dvcrn/maskedemail-cli v0.0.0-20230512062057-dadf2a986d10 h1:bXPCEcYsA/Bt8leDI+S9JchxO3YjjyJNND2q2IFnsV4=
+github.com/dvcrn/maskedemail-cli v0.0.0-20230512062057-dadf2a986d10/go.mod h1:TU8E0RslsOUiXYsICzcpPcThV56wOhuGt+5+NNXDx6k=
+github.com/dvcrn/maskedemail-cli v0.0.0-20230603113757-7a0ce82189f6 h1:ORgd6cYAg5GdPNNE95vFXyy73rx8xy1XCprpVDGN1jE=
+github.com/dvcrn/maskedemail-cli v0.0.0-20230603113757-7a0ce82189f6/go.mod h1:TU8E0RslsOUiXYsICzcpPcThV56wOhuGt+5+NNXDx6k=
 github.com/envoyproxy/go-control-plane v0.9.0/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/go-control-plane v0.9.1-0.20191026205805-5f8ba28d4473/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
 github.com/envoyproxy/go-control-plane v0.9.4/go.mod h1:6rpuAdCZL397s3pYoYcLgu1mIlRU8Am5FuJP05cCM98=

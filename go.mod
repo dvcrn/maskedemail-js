@@ -2,7 +2,7 @@ module github.com/dvcrn/maskedemail-js
 
 go 1.18
 
-require github.com/dvcrn/maskedemail-cli v0.0.0-20221002023645-dc18e79ca1ac
+require github.com/dvcrn/maskedemail-cli v0.0.0-20230603113757-7a0ce82189f6
 
 require (
 	github.com/fsnotify/fsnotify v1.5.1 // indirect

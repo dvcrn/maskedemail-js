@@ -17,8 +17,6 @@ func main() {
 	js.Global().Set("maskedemailCreate", js.FuncOf(create))
 	js.Global().Set("maskedemailEnable", js.FuncOf(enable))
 	js.Global().Set("maskedemailDisable", js.FuncOf(disable))
-	js.Global().Set("maskedemailEnableById", js.FuncOf(enableByID))
-	js.Global().Set("maskedemailDisableById", js.FuncOf(disableByID))
 	<-done
 }
 
@@ -42,6 +40,7 @@ func list(this js.Value, args []js.Value) interface{} {
 	appname := "maskedemail-js"
 	clientID := "" // placeholder
 	accountID := args[1].String()
+	includeDeleted := args[2].Bool()
 
 	c := api.NewClient(token, appname, clientID)
 
@@ -59,7 +58,7 @@ func list(this js.Value, args []js.Value) interface{} {
 				return
 			}
 
-			aliases, err := c.GetAllMaskedEmails(session, accountID)
+			aliases, err := c.GetAllMaskedEmails(session, accountID, includeDeleted)
 			if err != nil {
 				reject.Invoke(err.Error())
 				fmt.Println(err.Error())
@@ -90,6 +89,8 @@ func create(this js.Value, args []js.Value) interface{} {
 	clientID := "" // placeholder
 	accountID := args[1].String()
 	forDomain := args[2].String()
+	description := args[3].String()
+	prefix := args[4].String()
 
 	c := api.NewClient(token, appname, clientID)
 
@@ -107,7 +108,7 @@ func create(this js.Value, args []js.Value) interface{} {
 				return
 			}
 
-			createdEmail, err := c.CreateMaskedEmail(session, accountID, forDomain, true)
+			createdEmail, err := c.CreateMaskedEmail(session, accountID, forDomain, description, prefix, true)
 			if err != nil {
 				reject.Invoke(err.Error())
 				fmt.Println(err.Error())
@@ -138,65 +139,6 @@ const (
 	actionEnable action = iota
 	actionDisable
 )
-
-func updateEmailStateByID(this js.Value, args []js.Value, action action) interface{} {
-	token := args[0].String()
-	appname := "test"
-	clientID := "" // placeholder
-	accountID := args[1].String()
-	maskedEmailID := args[2].String()
-
-	c := api.NewClient(token, appname, clientID)
-
-	// create promise handler
-	handler := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
-		resolve := args[0]
-		reject := args[1]
-
-		go func() {
-			session, err := c.Session()
-			if err != nil {
-				reject.Invoke(err.Error())
-				fmt.Println(err.Error())
-				return
-			}
-
-			var res interface{}
-			if action == actionEnable {
-				res, err = c.EnableMaskedEmailByID(session, accountID, maskedEmailID)
-				if err != nil {
-					reject.Invoke(err.Error())
-					fmt.Println(err.Error())
-					return
-				}
-
-			} else {
-				res, err = c.DisableMaskedEmailByID(session, accountID, maskedEmailID)
-				if err != nil {
-					reject.Invoke(err.Error())
-					fmt.Println(err.Error())
-					return
-				}
-
-			}
-
-			out, err := remarshalInterface(res)
-			if err != nil {
-				reject.Invoke(err.Error())
-				fmt.Println(err.Error())
-				return
-			}
-
-			// pass result into promise resolve
-			resolve.Invoke(out)
-		}()
-
-		return nil
-	})
-
-	promiseConstructor := js.Global().Get("Promise")
-	return promiseConstructor.New(handler)
-}
 
 func updateEmailState(this js.Value, args []js.Value, action action) interface{} {
 	token := args[0].String()
@@ -255,14 +197,6 @@ func updateEmailState(this js.Value, args []js.Value, action action) interface{}
 
 	promiseConstructor := js.Global().Get("Promise")
 	return promiseConstructor.New(handler)
-}
-
-func enableByID(this js.Value, args []js.Value) interface{} {
-	return updateEmailStateByID(this, args, actionEnable)
-}
-
-func disableByID(this js.Value, args []js.Value) interface{} {
-	return updateEmailStateByID(this, args, actionDisable)
 }
 
 func enable(this js.Value, args []js.Value) interface{} {
