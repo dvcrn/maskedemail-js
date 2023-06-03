@@ -39,8 +39,6 @@ export const init = async (initMode: InitMode = InitMode.Wasm): Promise<Mod> => 
         create: (globalThis as any)["maskedemailCreate"],
         enable: (globalThis as any)["maskedemailEnable"],
         disable: (globalThis as any)["maskedemailDisable"],
-        enableById: (globalThis as any)["maskedemailEnableById"],
-        disableById: (globalThis as any)["maskedemailDisableById"],
       });
     });
   }
@@ -49,5 +47,5 @@ export const init = async (initMode: InitMode = InitMode.Wasm): Promise<Mod> => 
 };
 
 export * from "./types";
-const { session, list, create, enable, disable, enableById, disableById } = load(init);
-export { session, list, create, enable, disable, enableById, disableById };
+const { session, list, create, enable, disable } = load(init);
+export { session, list, create, enable, disable };

@@ -33,6 +33,4 @@ export interface Mod {
   ) => Promise<MaskedEmail>;
   enable: (token: string, accountId: string, email: string) => Promise<MaskedEmail>;
   disable: (token: string, accountId: string, emailId: string) => Promise<MaskedEmail>;
-  enableById: (token: string, accountId: string, email: string) => Promise<MaskedEmail>;
-  disableById: (token: string, accountId: string, emailId: string) => Promise<MaskedEmail>;
 }

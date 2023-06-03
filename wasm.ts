@@ -1,7 +1,6 @@
-import { load, Mod } from './core';
-import './shim';
+import { load, Mod } from "./core";
+import "./shim";
 import wasmMain from "./static/main.wasm";
-
 
 let initPromise: Promise<Mod>;
 
@@ -28,16 +27,13 @@ export const init = async (): Promise<Mod> => {
         create: (globalThis as any)["maskedemailCreate"],
         enable: (globalThis as any)["maskedemailEnable"],
         disable: (globalThis as any)["maskedemailDisable"],
-        enableById: (globalThis as any)["maskedemailEnableById"],
-        disableById: (globalThis as any)["maskedemailDisableById"],
       });
     });
   }
 
   return initPromise;
-}
+};
 
-export * from './types';
-const { session, list, create, enable, disable, enableById, disableById } = load(init);
-export { session, list, create, enable, disable, enableById, disableById };
-
+export * from "./types";
+const { session, list, create, enable, disable } = load(init);
+export { session, list, create, enable, disable };
