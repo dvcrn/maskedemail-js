@@ -2,7 +2,7 @@ export interface MaskedEmail {
   forDomain: string;
   createdAt: string;
   createdBy: string;
-  url: string;
+  description: string;
   email: string;
   id: string;
   lastMessageAt: string;
